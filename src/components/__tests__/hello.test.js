@@ -80,3 +80,15 @@ test('1 * 2', () => {
 test('1 / 2', () => {
   expect(calculator(1,2,'divide')).toEqual(0.5)
 })
+
+// A caesarCipher function that takes a string and a shift factor and returns it with each character “shifted”. Read more about how a Caesar cipher works on this website.
+
+test('caesar, "hello" (ROT 13)', () => {
+  expect(caesarCihper(string)).toEqual('uryyb')
+})
+test('caesar, "Testing" (ROT 13)', () => {
+  expect(caesarCihper(string)).toEqual('Grfgvat')
+})
+test('caesar, "JavaScript" (ROT 13)', () => {
+  expect(caesarCihper(string)).toEqual('WninFpevcg')
+})
