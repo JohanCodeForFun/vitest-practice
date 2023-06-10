@@ -82,13 +82,37 @@ test('1 / 2', () => {
 })
 
 // A caesarCipher function that takes a string and a shift factor and returns it with each character “shifted”. Read more about how a Caesar cipher works on this website.
+function isUpperCase(character) {
+  return character === character.toUpperCase();
+}
 
+function caesarCihper(string, shift) {
+  const resultArray = [];
+
+  for (let i = 0; i < string.length; i++) {
+    let cipher = string.charCodeAt(i) + shift;
+    while (cipher > 122) {
+      cipher = (cipher - 122) + 96
+    }
+    // console.log(isUpperCase(String.fromCharCode(cipher)))
+    if (isUpperCase(String.fromCharCode(cipher))) {
+      resultArray.push(String.fromCharCode(cipher).toUpperCase());
+    }
+    resultArray.push(String.fromCharCode(cipher));
+  }
+
+  return resultArray.join('');
+}
+
+test('caesar, "abc" (ROT 13)', () => {
+  expect(caesarCihper("abc", 13)).toEqual('nop')
+})
 test('caesar, "hello" (ROT 13)', () => {
-  expect(caesarCihper(string)).toEqual('uryyb')
+  expect(caesarCihper("hello", 13)).toEqual('uryyb')
 })
 test('caesar, "Testing" (ROT 13)', () => {
-  expect(caesarCihper(string)).toEqual('Grfgvat')
+  expect(caesarCihper("Testing", 13)).toEqual('Grfgvat')
 })
 test('caesar, "JavaScript" (ROT 13)', () => {
-  expect(caesarCihper(string)).toEqual('WninFpevcg')
+  expect(caesarCihper("JavaScript", 13)).toEqual('WninFpevcg')
 })
